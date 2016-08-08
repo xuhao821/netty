@@ -37,9 +37,24 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
             sendError(ctx,METHOD_NOT_ALLOWED);
             return;
         }
+
+        final String uri = request.getUri();
+        final String path = satizeUri(uri);
+        if(null== path){
+            sendError(ctx,FORBIDDEN);
+            return;
+        }
+        File file = new File(path);
+        if(file.isHidden() || file.exists()){
+            sendError(ctx,NOT_FOUND);
+            return ;
+        }
+        if(file.isDirectory()){
+            if(uri.endsWith("/")){
+               // send
+            }
+        }
     }
-
-
 
     public static void sendError(ChannelHandlerContext ctx, HttpResponseStatus status){
         FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1,status, Unpooled.copiedBuffer("Failure: " + status.toString()
@@ -52,6 +67,10 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
         MimetypesFileTypeMap mimetypesFileTypeMap = new MimetypesFileTypeMap();
         response.headers().set(CONTENT_TYPE,
                 mimetypesFileTypeMap.getContentType(file.getPath()));
+    }
+
+    private String satizeUri(String uri){
+        return "";
     }
 
 

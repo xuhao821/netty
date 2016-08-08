@@ -22,6 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="java-basics" />
         <module name="javaBasics" />
         <module name="netty-client" />
         <module name="netty-service" />
@@ -29,11 +30,15 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="java-basics" target="1.5" />
       <module name="javaBasics" target="1.5" />
       <module name="netty" target="1.5" />
       <module name="netty-client" target="1.5" />
       <module name="netty-service" target="1.5" />
       <module name="redis" target="1.5" />
+      <module name="spring" target="1.5" />
+      <module name="spring-boot" target="1.5" />
+      <module name="untitled" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

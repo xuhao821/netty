@@ -38,8 +38,8 @@ public class HttpFileServer {
                             ch.pipeline().addLast("fileServerHandler",null);
                         }
                     });
-            ChannelFuture cf = bootstrap.bind("192.168.0.119",port).sync();
-            System.out.println("启动文件服务：http://192.168.0.119:"+port+"/"+url);
+            ChannelFuture cf = bootstrap.bind("192.168.0.126",port).sync();
+            System.out.println("启动文件服务：http://192.168.0.126:"+port+"/"+url);
             //等待服务器监听端口关闭
             cf.channel().closeFuture().sync();
 
